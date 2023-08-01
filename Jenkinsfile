@@ -5,13 +5,9 @@ pipeline {
     stages {
         stage('Lint Checks') {                                          // Start of the stages
             steps {
-                script { 
-                    sample.info('CATALOGUE')
+                script {
+                    nodejs.lintChecks()
                 }
-                sh "echo Installing JSLint"
-                sh "npm i jslint"
-                sh "ls -lrt node_modules/jslint/bin"
-                sh "/home/centos/node_modules/jslint/bin/jslint.js server.js || true"
             }
         }                                                                
         stage('Code Compile') {
@@ -21,3 +17,8 @@ pipeline {
         }
     }                                                                   // End of the stages
 }
+
+
+            //    script { 
+            //         sample.info('CATALOGUE')
+            //     }
